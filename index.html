@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Eat Tokyo — Authentic Japanese, London</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Shippori+Mincho:wght@500;600;700;800&family=Zen+Kaku+Gothic+New:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --washi:#f1e9da;
+  --washi-2:#e9dfcb;
+  --sumi:#1a1511;
+  --sumi-soft:#241d17;
+  --ink:#2e271f;
+  --mist:#7c7062;
+  --vermilion:#bf3b2e;
+  --vermilion-deep:#9c2c22;
+  --gold:#b08a3e;
+  --cream:#f6efe1;
+  --serif:"Cormorant Garamond","Hiragino Mincho ProN","Yu Mincho",serif;
+  --mincho:"Shippori Mincho","Hiragino Mincho ProN","Yu Mincho",serif;
+  --sans:"Zen Kaku Gothic New","Hiragino Sans","Yu Gothic",system-ui,sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--sans);background:var(--washi);color:var(--ink);
+  line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+/* grain overlay */
+body::before{
+  content:"";position:fixed;inset:0;z-index:9999;pointer-events:none;opacity:.05;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+img{max-width:100%;display:block}
+a{color:inherit;text-decoration:none}
+
+/* ---------- nav ---------- */
+.nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;
+  justify-content:space-between;padding:18px 22px;
+  mix-blend-mode:difference;color:#fff;
+}
+.brand{font-family:var(--serif);font-weight:600;font-size:21px;letter-spacing:.18em}
+.brand .jp{font-family:var(--mincho);font-size:13px;letter-spacing:.3em;opacity:.85;margin-left:8px}
+.nav .menu-ic{display:flex;flex-direction:column;gap:4px}
+.nav .menu-ic span{width:24px;height:1.5px;background:#fff;display:block}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;min-height:100svh;background:var(--sumi);color:var(--cream);
+  padding:96px 22px 38px;display:flex;flex-direction:column;justify-content:space-between;
+  overflow:hidden;
+}
+.hero::after{ /* warm vignette */
+  content:"";position:absolute;inset:0;
+  background:radial-gradient(120% 80% at 75% 18%,rgba(191,59,46,.16),transparent 55%),
+             radial-gradient(140% 90% at 10% 100%,rgba(176,138,62,.10),transparent 60%);
+  pointer-events:none;
+}
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;font-size:11px;letter-spacing:.34em;
+  color:#d8c9a8;font-weight:500;text-transform:uppercase;
+}
+.hero-badge .ln{width:34px;height:1px;background:var(--gold)}
+.hero-top{position:relative;z-index:3}
+.hero-mid{position:relative;z-index:3;margin:auto 0}
+.hero h1{
+  font-family:var(--serif);font-weight:500;line-height:.98;letter-spacing:-.01em;
+  font-size:clamp(48px,16vw,108px);margin:18px 0 4px;
+}
+.hero h1 em{font-style:italic;color:var(--cream)}
+.hero h1 .v{color:var(--vermilion);font-style:italic}
+.hero .jp-line{
+  font-family:var(--mincho);font-weight:600;font-size:clamp(15px,4.6vw,21px);
+  letter-spacing:.16em;color:#e9d8b6;margin-bottom:20px;
+}
+.hero .sub{
+  max-width:30ch;font-size:14.5px;color:#cdbfa9;line-height:1.65;font-weight:300;
+  border-left:2px solid var(--vermilion);padding-left:14px;
+}
+.hero-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
+.btn{
+  font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.04em;
+  padding:14px 24px;border-radius:2px;transition:.35s cubic-bezier(.2,.7,.3,1);cursor:pointer;
+}
+.btn-solid{background:var(--vermilion);color:#fff;border:1px solid var(--vermilion)}
+.btn-solid:hover{background:var(--vermilion-deep);border-color:var(--vermilion-deep);transform:translateY(-2px)}
+.btn-ghost{border:1px solid rgba(246,239,225,.35);color:var(--cream)}
+.btn-ghost:hover{border-color:var(--cream);background:rgba(246,239,225,.06)}
+
+/* hero photo plate + hanko */
+.hero-plate{
+  position:absolute;top:0;right:-6%;width:62%;height:100%;z-index:1;
+  clip-path:polygon(18% 0,100% 0,100% 100%,0 100%);
+}
+.ph{
+  width:100%;height:100%;position:relative;overflow:hidden;
+  background:linear-gradient(115deg,rgba(26,21,17,.72),rgba(26,21,17,.12) 58%),url("eat-tokyo-assets/hero1.jpg");
+  background-size:cover;background-position:center;background-color:#352b22;
+}
+.ph .ph-tag{
+  position:absolute;bottom:12px;left:12px;font-size:9.5px;letter-spacing:.22em;
+  color:rgba(246,239,225,.55);text-transform:uppercase;font-weight:500;
+  border:1px solid rgba(246,239,225,.25);padding:3px 8px;border-radius:1px;
+}
+.hanko{
+  position:absolute;z-index:4;width:74px;height:74px;
+}
+.hanko.h-hero{top:42%;left:-26px}
+.hanko svg{filter:drop-shadow(0 6px 14px rgba(0,0,0,.35))}
+.v-rail{
+  position:absolute;z-index:3;right:18px;top:46%;writing-mode:vertical-rl;
+  font-family:var(--mincho);font-size:12px;letter-spacing:.42em;color:rgba(233,216,182,.7);
+  font-weight:600;
+}
+.scroll-cue{position:relative;z-index:3;display:flex;align-items:center;gap:10px;
+  font-size:10px;letter-spacing:.3em;color:#a99a82;text-transform:uppercase}
+.scroll-cue .bar{width:1px;height:34px;background:linear-gradient(var(--gold),transparent);animation:drop 2.2s infinite}
+@keyframes drop{0%{transform:scaleY(0);transform-origin:top}45%{transform:scaleY(1);transform-origin:top}55%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* ---------- section frame ---------- */
+.sec{padding:72px 22px;position:relative}
+.sec-num{
+  font-family:var(--mincho);font-size:13px;color:var(--vermilion);font-weight:700;
+  letter-spacing:.3em;display:flex;align-items:center;gap:12px;margin-bottom:18px;
+}
+.sec-num::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,rgba(46,39,31,.25),transparent)}
+.sec-num .en{font-family:var(--sans);font-size:10px;color:var(--mist);letter-spacing:.28em;text-transform:uppercase;font-weight:500}
+.sec h2{
+  font-family:var(--serif);font-weight:500;font-size:clamp(32px,9vw,52px);line-height:1.02;
+  letter-spacing:-.01em;color:var(--sumi);
+}
+.sec h2 .jp{display:block;font-family:var(--mincho);font-size:clamp(15px,4.4vw,20px);
+  font-weight:600;letter-spacing:.14em;color:var(--ink);margin-top:10px}
+
+/* story */
+.story p{font-size:15px;color:#5a4f43;max-width:46ch;margin-top:22px;line-height:1.8}
+.story p .drop{font-family:var(--serif);font-size:46px;float:left;line-height:.8;
+  color:var(--vermilion);margin:6px 12px 0 0;font-weight:500}
+.story .figures{display:flex;gap:30px;margin-top:34px;flex-wrap:wrap}
+.fig .n{font-family:var(--serif);font-size:42px;color:var(--sumi);line-height:1}
+.fig .n b{color:var(--vermilion);font-style:italic;font-weight:500}
+.fig .l{font-size:11px;letter-spacing:.16em;color:var(--mist);text-transform:uppercase;margin-top:6px}
+
+/* food grid */
+.food{background:var(--sumi);color:var(--cream)}
+.food .sec-num::after{background:linear-gradient(90deg,rgba(246,239,225,.25),transparent)}
+.food h2{color:var(--cream)}.food h2 .jp{color:#e9d8b6}
+.menu{display:grid;grid-template-columns:1fr;gap:14px;margin-top:34px}
+.dish{position:relative;border:1px solid rgba(246,239,225,.13);overflow:hidden;
+  border-radius:2px;background:#221b15;transition:.4s}
+.dish .img{height:210px;position:relative;overflow:hidden;
+  background-size:cover;background-position:center;background-color:#352b22;}
+.dish .img::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 40%,rgba(26,21,17,.82))}
+.dish .meta{position:absolute;left:0;right:0;bottom:0;padding:16px 18px;z-index:2}
+.dish .meta .jp{font-family:var(--mincho);font-size:13px;letter-spacing:.2em;color:var(--vermilion);font-weight:700}
+.dish .meta .en{font-family:var(--serif);font-size:25px;color:var(--cream);line-height:1.05;margin-top:2px}
+.dish .meta .d{font-size:11.5px;color:#bdb09a;margin-top:5px;font-weight:300}
+.dish .tag{position:absolute;top:12px;right:12px;z-index:2;font-size:9px;letter-spacing:.2em;
+  background:var(--vermilion);color:#fff;padding:3px 9px;border-radius:1px;text-transform:uppercase}
+.dish:hover{transform:translateY(-4px);border-color:rgba(246,239,225,.3)}
+.dish:hover .img{transform:scale(1.05)}
+.dish .img{transition:.6s cubic-bezier(.2,.7,.3,1)}
+
+/* season banner */
+.season{position:relative;margin-top:16px;height:210px;border-radius:2px;overflow:hidden;border:1px solid rgba(246,239,225,.14)}
+.season .img{position:absolute;inset:0;background-size:cover;background-position:center;transition:.6s cubic-bezier(.2,.7,.3,1)}
+.season:hover .img{transform:scale(1.05)}
+.season .img::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(26,21,17,.93),rgba(26,21,17,.28) 78%)}
+.season .txt{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;padding:0 24px;z-index:2}
+.season .k{font-family:var(--mincho);color:var(--vermilion);font-weight:700;letter-spacing:.28em;font-size:11px}
+.season .h{font-family:var(--serif);font-size:30px;color:var(--cream);font-style:italic;line-height:1;margin-top:6px}
+.season .jp{font-family:var(--mincho);font-size:11.5px;color:#cdbfa9;letter-spacing:.14em;margin-top:7px}
+.intl{margin-top:20px;font-size:12px;letter-spacing:.06em;color:var(--mist)}
+.intl b{color:var(--ink);font-family:var(--serif);font-style:italic;font-size:15px}
+
+/* branches */
+.branch-list{margin-top:30px;border-top:1px solid rgba(46,39,31,.16)}
+.branch{display:flex;align-items:baseline;justify-content:space-between;gap:16px;
+  padding:20px 4px;border-bottom:1px solid rgba(46,39,31,.16);position:relative;transition:.35s}
+.branch .nm{font-family:var(--serif);font-size:clamp(22px,6vw,30px);color:var(--sumi);transition:.35s}
+.branch .nm .jp{font-family:var(--mincho);font-size:12px;letter-spacing:.18em;color:var(--mist);margin-left:10px}
+.branch .area{font-size:11px;letter-spacing:.14em;color:var(--mist);text-transform:uppercase;text-align:right;white-space:nowrap}
+.branch::before{content:"";position:absolute;left:-22px;top:0;bottom:0;width:3px;background:var(--vermilion);transform:scaleY(0);transition:.35s}
+.branch:hover::before{transform:scaleY(1)}
+.branch:hover{padding-left:18px}
+.branch:hover .nm{color:var(--vermilion)}
+
+/* cta band */
+.cta{background:var(--vermilion);color:#fff;text-align:center;padding:74px 22px;position:relative;overflow:hidden}
+.cta .big{font-family:var(--serif);font-size:clamp(38px,12vw,72px);font-style:italic;font-weight:500;line-height:1}
+.cta .jp{font-family:var(--mincho);font-size:14px;letter-spacing:.3em;margin-top:14px;color:rgba(255,255,255,.85)}
+.cta .btn-solid{background:var(--sumi);border-color:var(--sumi);margin-top:30px}
+.cta .btn-solid:hover{background:#000;border-color:#000}
+.cta .seal{position:absolute;opacity:.12;width:200px;height:200px;right:-40px;top:-40px}
+
+/* footer */
+.foot{background:var(--sumi);color:#bdb09a;padding:48px 22px 34px;font-size:12px}
+.foot .fb{font-family:var(--serif);font-size:24px;letter-spacing:.18em;color:var(--cream)}
+.foot .fb .jp{font-family:var(--mincho);font-size:12px;letter-spacing:.3em;color:var(--gold);margin-left:8px}
+.foot .row{display:flex;justify-content:space-between;align-items:flex-end;
+  margin-top:26px;border-top:1px solid rgba(246,239,225,.12);padding-top:18px;flex-wrap:wrap;gap:14px}
+.foot .social{display:flex;gap:18px;font-size:11px;letter-spacing:.16em;text-transform:uppercase}
+.foot .social a{transition:.3s}.foot .social a:hover{color:var(--vermilion)}
+.foot .cp{font-size:10.5px;letter-spacing:.08em;color:#7a6f5f}
+
+/* reveal */
+.reveal{opacity:0;transform:translateY(26px);transition:.9s cubic-bezier(.16,.8,.3,1)}
+.reveal.in{opacity:1;transform:none}
+/* hero load stagger */
+.hero-top,.hero .hero-badge,.hero h1,.hero .jp-line,.hero .sub,.hero-cta,.scroll-cue{
+  animation:rise .95s cubic-bezier(.16,.8,.3,1) both}
+.hero .hero-badge{animation-delay:.05s}
+.hero h1{animation-delay:.18s}
+.hero .jp-line{animation-delay:.34s}
+.hero .sub{animation-delay:.46s}
+.hero-cta{animation-delay:.56s}
+.scroll-cue{animation-delay:.7s}
+.hero-plate{animation:fade 1.6s ease .2s both}
+.hanko.h-hero{animation:stamp 1s cubic-bezier(.2,1.4,.4,1) .9s both}
+@keyframes rise{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:none}}
+@keyframes fade{from{opacity:0}to{opacity:1}}
+@keyframes stamp{0%{opacity:0;transform:scale(2.2) rotate(-18deg)}60%{opacity:1}100%{opacity:1;transform:scale(1) rotate(-9deg)}}
+
+@media(min-width:760px){
+  .sec{padding:110px 8vw}
+  .hero{padding:120px 8vw 48px}
+  .menu{grid-template-columns:1fr 1fr;gap:18px}
+  .hero .sub{font-size:16px}
+  .hero-plate{right:0;width:48%}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="nav">
+  <div class="brand">EAT TOKYO<span class="jp">江戸前</span></div>
+  <div class="menu-ic"><span></span><span></span><span></span></div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="hero-plate">
+    <div class="ph"></div>
+  </div>
+  <div class="hanko h-hero">
+    <svg viewBox="0 0 100 100" width="74" height="74">
+      <rect x="4" y="4" width="92" height="92" rx="8" fill="#bf3b2e"/>
+      <rect x="4" y="4" width="92" height="92" rx="8" fill="none" stroke="#9c2c22" stroke-width="2"/>
+      <text x="50" y="40" text-anchor="middle" font-family="'Shippori Mincho',serif" font-size="34" font-weight="800" fill="#f6efe1">東</text>
+      <text x="50" y="80" text-anchor="middle" font-family="'Shippori Mincho',serif" font-size="34" font-weight="800" fill="#f6efe1">京</text>
+    </svg>
+  </div>
+  <div class="v-rail">本物の江戸前を、ロンドンで。</div>
+
+  <div class="hero-top">
+    <div class="hero-badge"><span class="ln"></span>Tokyo · London · Düsseldorf</div>
+  </div>
+
+  <div class="hero-mid">
+    <h1>The Tokyo<br>you can <em class="v">taste.</em></h1>
+    <div class="jp-line">本物の和食を、ロンドンで。</div>
+    <p class="sub">Properly Japanese — never anglicised. Fresh sushi, generous bento, real ramen. From Tokyo to eight kitchens across London.</p>
+    <div class="hero-cta">
+      <a class="btn btn-solid" href="#order">Order on Deliveroo</a>
+      <a class="btn btn-ghost" href="#branches">Find your branch</a>
+    </div>
+  </div>
+
+  <div class="scroll-cue"><span class="bar"></span>Scroll</div>
+</header>
+
+<!-- STORY -->
+<section class="sec story reveal">
+  <div class="sec-num">壱<span class="en">Our story</span></div>
+  <h2>Four decades.<br>One standard.<span class="jp">四十年、変わらぬ仕事。</span></h2>
+  <p><span class="drop">J</span>apanese-owned and proudly authentic, Eat Tokyo serves the food the way it's actually eaten in Japan — never anglicised, always fresh. From the first kitchen to a group spanning Tokyo, London and Düsseldorf, one thing hasn't changed: real cooking, generous portions, honest prices.</p>
+  <div class="figures">
+    <div class="fig"><div class="n"><b>40</b></div><div class="l">Years of cooking</div></div>
+    <div class="fig"><div class="n"><b>8</b></div><div class="l">Kitchens in London</div></div>
+    <div class="fig"><div class="n"><b>3</b></div><div class="l">Countries · JP·UK·DE</div></div>
+  </div>
+</section>
+
+<!-- FOOD -->
+<section class="sec food reveal">
+  <div class="sec-num">弐<span class="en">The menu</span></div>
+  <h2>Cut to order.<span class="jp">旬を、握る。</span></h2>
+  <div class="menu">
+    <article class="dish">
+      <div class="img" style="background-image:url('eat-tokyo-assets/sushi1.jpg')"></div>
+      <div class="meta"><div class="jp">鮨・刺身</div><div class="en">Sushi &amp; Sashimi</div><div class="d">Fresh daily, hand-cut — never anglicised.</div></div>
+    </article>
+    <article class="dish">
+      <span class="tag">Signature</span>
+      <div class="img" style="background-image:url('eat-tokyo-assets/bento1.jpg')"></div>
+      <div class="meta"><div class="jp">弁当</div><div class="en">Bento Boxes</div><div class="d">Our signature — generous boxes from under £20.</div></div>
+    </article>
+    <article class="dish">
+      <div class="img" style="background-image:url('eat-tokyo-assets/ramen1.jpg')"></div>
+      <div class="meta"><div class="jp">麺・丼</div><div class="en">Ramen &amp; Donburi</div><div class="d">Deep, honest bowls — see Tonkotsu-ya, our ramen kitchen.</div></div>
+    </article>
+    <article class="dish">
+      <div class="img" style="background-image:url('eat-tokyo-assets/katsu1.jpg')"></div>
+      <div class="meta"><div class="jp">カツ・カレー</div><div class="en">Katsu &amp; Curry</div><div class="d">Chicken katsu curry — the one everyone orders.</div></div>
+    </article>
+  </div>
+  <div class="season">
+    <div class="img" style="background-image:url('eat-tokyo-assets/uniA.jpg')"></div>
+    <div class="txt">
+      <div class="k">旬 · IN SEASON</div>
+      <div class="h">Sea urchin, in now.</div>
+      <div class="jp">雲丹、入荷しました。 — ask in branch</div>
+    </div>
+  </div>
+</section>
+
+<!-- BRANCHES -->
+<section class="sec reveal" id="branches">
+  <div class="sec-num">参<span class="en">Find us</span></div>
+  <h2>Eight kitchens,<br>across London.<span class="jp">ロンドン、八つの厨房。</span></h2>
+  <div class="branch-list">
+    <a class="branch"><span class="nm">Soho<span class="jp">ソーホー</span></span><span class="area">16 Old Compton St · W1</span></a>
+    <a class="branch"><span class="nm">Covent Garden<span class="jp">コヴェント</span></span><span class="area">Central · WC2</span></a>
+    <a class="branch"><span class="nm">Holborn<span class="jp">ホルボーン</span></span><span class="area">Central London</span></a>
+    <a class="branch"><span class="nm">Notting Hill Gate<span class="jp">ノッティング</span></span><span class="area">17 Notting Hill Gate · W11</span></a>
+    <a class="branch"><span class="nm">Hammersmith<span class="jp">ハマースミス</span></span><span class="area">West · W6</span></a>
+    <a class="branch"><span class="nm">Golders Green<span class="jp">ゴルダーズ</span></span><span class="area">North · NW11</span></a>
+    <a class="branch"><span class="nm">G2 · Shabu-Shabu<span class="jp">しゃぶしゃぶ</span></span><span class="area">Golders Green</span></a>
+    <a class="branch"><span class="nm">Tonkotsu-ya<span class="jp">豚骨家</span></span><span class="area">Ramen specialist</span></a>
+  </div>
+  <div class="intl">And further afield — <b>Tokyo</b> ×6 &nbsp;·&nbsp; <b>Düsseldorf</b> ×3</div>
+</section>
+
+<!-- CTA -->
+<section class="cta" id="order">
+  <svg class="seal" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#fff" stroke-width="3"/><text x="50" y="64" text-anchor="middle" font-family="'Shippori Mincho',serif" font-size="46" font-weight="800" fill="#fff">鮨</text></svg>
+  <div class="big">Hungry yet?</div>
+  <div class="jp">いますぐ、お届け。</div>
+  <a class="btn btn-solid" href="#">Order on Deliveroo →</a>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="fb">EAT TOKYO<span class="jp">江戸前</span></div>
+  <div class="row">
+    <div>Japanese-owned · Tokyo · London · Düsseldorf · Est. 40 years</div>
+    <div class="social"><a href="#">Instagram</a><a href="#">TikTok</a><a href="#">Deliveroo</a></div>
+  </div>
+  <div class="row" style="border:none;padding-top:6px">
+    <div class="cp">© 2026 Eat Tokyo. Concept landing page — demo by Nagi.</div>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver((es)=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.16});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
