@@ -66,6 +66,12 @@ body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;o
 /* ---------- hero ---------- */
 .hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
   padding:0 26px 7vh;overflow:hidden}
+.hero-bg{position:absolute;inset:0;z-index:0;overflow:hidden}
+.hero-img{position:absolute;inset:-10% 0;background-size:cover;background-position:center 40%;transform:scale(1.05);will-change:transform}
+.hero-bg::after{content:"";position:absolute;inset:0;background:
+  linear-gradient(180deg,rgba(8,5,4,.5),rgba(8,5,4,.1) 32%,rgba(8,5,4,.72) 76%,rgba(8,5,4,.97)),
+  linear-gradient(90deg,rgba(8,5,4,.55),transparent 62%)}
+.h-title,.h-sub{position:relative;z-index:2}
 .hero .badge{position:absolute;top:13vh;left:26px;display:flex;align-items:center;gap:12px;
   font-size:11px;letter-spacing:.3em;color:var(--mist-d);text-transform:uppercase;font-weight:500}
 .hero .badge .ln{width:36px;height:1px;background:var(--gold)}
@@ -118,7 +124,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;o
 .fig .l{font-size:11px;letter-spacing:.16em;color:var(--mist);text-transform:uppercase;margin-top:6px}
 
 /* menu horizontal gallery */
-.menu-pin{position:relative;height:100svh;overflow:hidden;background:var(--sumi);z-index:2}
+.menu-pin{position:relative;height:100svh;overflow:hidden;background:rgba(18,13,9,.84);z-index:2}
 .menu-head{position:absolute;top:11vh;left:26px;z-index:5;pointer-events:none}
 .menu-track{position:absolute;top:0;left:0;height:100%;display:flex;align-items:center;gap:30px;padding:0 26px;will-change:transform}
 .card{position:relative;flex:0 0 78vw;max-width:440px;height:64vh;border-radius:3px;overflow:hidden;
@@ -212,6 +218,7 @@ body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;o
 
   <!-- HERO -->
   <header class="hero">
+    <div class="hero-bg"><div class="hero-img" style="background-image:url('eat-tokyo-assets/hero1.jpg')"></div></div>
     <div class="badge"><span class="ln"></span>Tokyo · London · Düsseldorf</div>
     <svg class="hanko" viewBox="0 0 100 100">
       <rect x="4" y="4" width="92" height="92" rx="8" fill="#cf4030"/>
@@ -433,6 +440,9 @@ body::after{content:"";position:fixed;inset:0;z-index:9998;pointer-events:none;o
 
     // hero parallax
     gsap.to('.h-title',{yPercent:-18,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
+    // hero photo: ken burns + scroll parallax
+    gsap.to('.hero-img',{scale:1.16,duration:16,ease:'sine.inOut',repeat:-1,yoyo:true});
+    gsap.to('.hero-img',{yPercent:14,ease:'none',scrollTrigger:{trigger:'.hero',start:'top top',end:'bottom top',scrub:true}});
 
     // generic reveals
     gsap.utils.toArray('.reveal').forEach(el=>{
