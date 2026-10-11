@@ -1,0 +1,15 @@
+/* A brief noren entrance. CSS-only: the page remains usable without JavaScript. */
+.entrance{position:fixed;inset:0;z-index:200;overflow:hidden;pointer-events:none;animation:entrance-finish 1.65s linear both}
+.entrance-rail{position:absolute;left:0;right:0;top:0;height:9px;z-index:2;background:#302d24;box-shadow:0 3px 10px #25221730;animation:rail-leave .65s .7s ease both}
+.entrance-cloth{position:absolute;top:0;bottom:-25px;width:50.2%;background-color:#eee7d9;background-image:repeating-linear-gradient(90deg,#ffffff00 0,#ffffff1a 14%,#b3a68b12 28%,#ffffff00 33.33%),repeating-linear-gradient(0deg,#806f5005 0,#806f5005 1px,transparent 1px,transparent 3px);border-bottom:1px solid #b7ab93;will-change:transform;box-shadow:0 0 24px #28231822}
+.entrance-cloth::after{content:'';position:absolute;inset:18px 0 13px;background:repeating-linear-gradient(90deg,transparent 0,transparent calc(33.333% - 1px),#958a7426 calc(33.333% - 1px),#ffffff60 33.333%);border-top:1px solid #998b7322;border-bottom:1px solid #998b7326}
+.entrance-left{left:0;transform-origin:top left;animation:noren-left 1s .35s cubic-bezier(.65,0,.22,1) both}
+.entrance-right{right:0;transform-origin:top right;animation:noren-right 1s .35s cubic-bezier(.65,0,.22,1) both}
+.entrance-sign{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:19px;color:#292b22;animation:sign-leave .5s .25s ease both;white-space:nowrap}
+.entrance-sign img{width:58px;height:58px;object-fit:contain}.entrance-sign>span{font:700 37px Georgia,serif;letter-spacing:-1px}.entrance-sign b{font-size:42px;letter-spacing:1px}.entrance-sign small{font-family:var(--jp);font-size:12px;letter-spacing:4px;margin-top:5px}
+@keyframes noren-left{0%{transform:translateX(0) rotate(0)}45%{transform:translateX(-28%) rotate(1.5deg)}100%{transform:translateX(-106%) rotate(2deg)}}
+@keyframes noren-right{0%{transform:translateX(0) rotate(0)}45%{transform:translateX(28%) rotate(-1.5deg)}100%{transform:translateX(106%) rotate(-2deg)}}
+@keyframes sign-leave{to{opacity:0;transform:translate(-50%,-58%)}}
+@keyframes rail-leave{to{opacity:0;transform:translateY(-12px)}}
+@keyframes entrance-finish{0%,85%{visibility:visible}100%{visibility:hidden}}
+@media(prefers-reduced-motion:reduce){.entrance{display:none}.entrance *{animation:none}}
