@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Eat Tokyo — 暖簾の向こうに、いつもの和食。</title>
+  <meta name="description" content="A familiar Japanese kitchen in London. Discover Eat Tokyo's food, welcoming spaces and London branches.">
+  <meta name="theme-color" content="#25271f">
+  <link rel="stylesheet" href="style.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <header class="entrance">
+    <div class="eave" aria-hidden="true"><div class="eave-surface"></div></div>
+    <div class="noren-rod" aria-hidden="true"></div>
+    <div class="noren">
+      <a class="brand-cloth cloth" href="#" aria-label="Eat Tokyo home"><span class="wordmark"><span>eat</span><img src="assets/crest.svg" alt="" width="48" height="48"><b>TOKYO</b></span><span class="brand-note">JAPANESE KITCHENS · LONDON</span></a>
+      <nav class="noren-nav" aria-label="Main navigation">
+        <a class="cloth" href="#menu"><span lang="ja">お品書き</span><small>Our food</small></a>
+        <a class="cloth" href="#place"><span lang="ja">お店のこと</span><small>Our place</small></a>
+        <a class="cloth" href="#branches"><span lang="ja">店舗案内</span><small>Find us</small></a>
+      </nav>
+    </div>
+  </header>
+  <main id="main">
+    <section class="welcome wrap" aria-labelledby="welcome-title">
+      <div class="welcome-copy">
+        <p class="small-label"><span></span> WELCOME TO EAT TOKYO</p>
+        <h1 id="welcome-title" lang="ja"><span>暖簾の向こうに、</span><span>いつもの和食。</span></h1>
+        <p class="welcome-english">Your familiar<br>Japanese kitchen.</p>
+        <p class="welcome-description">A warm light. A wooden counter.<br>A little taste of Japan, here in London.</p>
+        <a class="ink-button" href="#menu"><span lang="ja">お品書きを見る</span><span>Explore our food <i aria-hidden="true">↓</i></span></a>
+      </div>
+      <div class="welcome-view">
+        <figure class="front-photo"><img src="assets/storefront.jpg" alt="Eat Tokyo's real London storefront, with dark wooden slats, cream noren and a glowing lantern" width="1200" height="800" fetchpriority="high"><figcaption><span lang="ja">ふらっと、どうぞ。</span><span>Come on in.</span></figcaption></figure>
+        <div class="welcome-bottom"><span class="welcome-rule"></span><p lang="ja">ロンドンで、いただきます。</p><a href="#branches">Find your neighbourhood kitchen <span aria-hidden="true">↗</span></a></div>
+      </div>
+    </section>
+    <section class="menu-paper wrap" id="menu" aria-labelledby="menu-title">
+      <div class="paper-heading"><div class="section-sign"><span class="section-number">一</span><div><p class="small-label">FROM OUR KITCHEN</p><h2 id="menu-title" lang="ja">お品書き</h2><p class="english-heading">Something for your appetite.</p></div></div><p class="heading-description">Sushi for sharing, a box of favourites,<br>or a comforting bowl. What feels good today?</p></div>
+      <div class="menu-tabs" role="group" aria-label="Filter the food selection"><button class="selected" data-filter="all" aria-pressed="true"><span lang="ja">すべて</span><small>All favourites</small></button><button data-filter="sushi" aria-pressed="false"><span lang="ja">鮨・刺身</span><small>Sushi & sashimi</small></button><button data-filter="bento" aria-pressed="false"><span lang="ja">弁当</span><small>Bento</small></button><button data-filter="warm" aria-pressed="false"><span lang="ja">温かい一品</span><small>Something warm</small></button></div>
+      <div class="menu-grid" aria-live="polite">
+        <article class="dish" data-category="sushi"><figure><img src="assets/sushi1.jpg" alt="Salmon sushi held between chopsticks" width="800" height="600" loading="lazy"></figure><div class="dish-copy"><div class="dish-title"><h3 lang="ja">鮨と刺身</h3><span class="dish-index">01</span></div><p class="dish-english">Sushi & sashimi</p><p class="dish-description">Pick your favourites, or share a little of everything.</p><a href="#branches">Explore your branch menu <span aria-hidden="true">↗</span></a></div></article>
+        <article class="dish" data-category="bento"><figure><img src="assets/bento1.jpg" alt="A bento box filled with a selection of Japanese dishes" width="800" height="600" loading="lazy"></figure><div class="dish-copy"><div class="dish-title"><h3 lang="ja">彩りの弁当</h3><span class="dish-index">02</span></div><p class="dish-english">Bento boxes</p><p class="dish-description">A little variety. A satisfying meal, all in one box.</p><a href="#branches">Explore your branch menu <span aria-hidden="true">↗</span></a></div></article>
+        <article class="dish" data-category="warm"><figure><img src="assets/ramen1.jpg" alt="A warm bowl of ramen with noodles, egg and toppings" width="800" height="600" loading="lazy"></figure><div class="dish-copy"><div class="dish-title"><h3 lang="ja">麺と丼</h3><span class="dish-index">03</span></div><p class="dish-english">Noodles & rice bowls</p><p class="dish-description">Settle in with a warm bowl from your branch menu.</p><a href="#branches">Explore your branch menu <span aria-hidden="true">↗</span></a></div></article>
+        <article class="dish" data-category="warm"><figure><img src="assets/katsu1.jpg" alt="Golden katsu with Japanese curry and rice" width="800" height="600" loading="lazy"></figure><div class="dish-copy"><div class="dish-title"><h3 lang="ja">カツとカレー</h3><span class="dish-index">04</span></div><p class="dish-english">Katsu & curry</p><p class="dish-description">Golden, crisp and comforting. A familiar favourite.</p><a href="#branches">Explore your branch menu <span aria-hidden="true">↗</span></a></div></article>
+      </div>
+      <div class="paper-note"><span lang="ja">店舗ごとのお品書きはこちら。</span><p>Visit the official branch pages for current dishes, prices and allergy information.</p><a href="#branches">Choose a branch ↓</a></div>
+    </section>
+    <section class="place wrap" id="place" aria-labelledby="place-title">
+      <figure class="curtain-photo"><img src="assets/noren.webp" alt="The actual Eat Tokyo linen noren hanging over a warmly lit wooden staircase" width="1280" height="1707" loading="lazy"><figcaption><span lang="ja">この暖簾が、目印です。</span><span>Look for the familiar curtain.</span></figcaption></figure>
+      <div class="wood-screen" aria-hidden="true"></div>
+      <div class="place-copy"><p class="small-label">二 / BEHIND THE CURTAIN</p><h2 id="place-title" lang="ja">木のぬくもり。<br>いつもの席。</h2><p class="place-english">Make yourself at home.</p><p class="place-description">Cream curtains, dark timber and the glow of warm lights. These are the little things that make an Eat Tokyo kitchen feel familiar.</p><p class="place-description">A quick lunch at the counter. A meal with friends. Step inside, take a seat and find something you love.</p><figure class="counter-photo"><img src="assets/interior.jpg" alt="Eat Tokyo's wooden counter, small tables and amber woven pendant lamps" width="500" height="375" loading="lazy"><figcaption>A warm welcome, from the street to your seat.</figcaption></figure></div>
+    </section>
+    <section class="branches-paper wrap" id="branches" aria-labelledby="branches-title">
+      <div class="paper-heading"><div class="section-sign"><span class="section-number">三</span><div><p class="small-label">YOUR NEIGHBOURHOOD</p><h2 id="branches-title" lang="ja">店舗案内</h2><p class="english-heading">Find your Eat Tokyo.</p></div></div><div class="branch-control"><label for="area">London area</label><select id="area"><option value="all">All London</option><option value="central">Central London</option><option value="west">West London</option><option value="north">North London</option></select></div></div>
+      <div class="branch-list" id="branch-list" aria-live="polite"></div>
+      <p class="branch-note">Menus, opening times and booking information are available on each official branch page.</p>
+    </section>
+    <section class="farewell wrap"><img src="assets/crest.svg" width="44" height="44" alt="" aria-hidden="true"><p lang="ja">また、お待ちしています。</p><h2>See you at the table.</h2><a class="ink-button" href="#branches"><span lang="ja">お近くの店舗へ</span><span>Find your branch <i aria-hidden="true">↗</i></span></a></section>
+  </main>
+  <footer class="wrap"><span>Eat Tokyo · Design concept by Nagi</span><a href="https://www.eattokyo.co.uk/" target="_blank" rel="noopener">Official website ↗</a><a href="#">Back to top ↑</a></footer>
+</body>
+</html>
