@@ -39,3 +39,9 @@ function renderBranches(area){
 }
 renderBranches('all');
 document.querySelector('#area').addEventListener('change',event=>renderBranches(event.target.value));
+const sourceToggle=document.querySelector('.source-toggle');
+sourceToggle.addEventListener('click',()=>{
+  const expanded=sourceToggle.getAttribute('aria-expanded')==='true';
+  sourceToggle.setAttribute('aria-expanded',String(!expanded));
+  document.querySelector('#photo-sources').hidden=expanded;
+});
