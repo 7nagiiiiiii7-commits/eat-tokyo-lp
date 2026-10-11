@@ -36,10 +36,10 @@ function renderBranches(area){
 }
 renderBranches('all');document.querySelector('#area').addEventListener('change',e=>renderBranches(e.target.value));
 const food={
-  sushi:{title:'Sushi & sashimi',image:'sushi1.jpg',description:'Explore sushi, sashimi, nigiri and more. Pick your favourites from the menu at your local Eat Tokyo.'},
-  bento:{title:'Bento boxes',image:'bento1.jpg',description:'A box with a little variety. Explore the bento combinations on your local branch menu.'},
-  noodles:{title:'Noodles & rice bowls',image:'ramen1.jpg',description:'A comforting bowl for a hungry day. Check your branch menu for its selection of noodles and rice dishes.'},
-  katsu:{title:'Katsu & curry',image:'katsu1.jpg',description:'Golden katsu and Japanese curry. Find the dishes available at your local Eat Tokyo.'}
+  sushi:{title:'Sushi & sashimi',image:'eat-tokyo-nigiri.jpg',description:'Explore sushi, sashimi, nigiri and more. Pick your favourites from the menu at your local Eat Tokyo.'},
+  bento:{title:'Bento boxes',image:'eat-tokyo-bento.jpg',description:'A box with a little variety. Explore the bento combinations on your local branch menu.'},
+  noodles:{title:'Noodles & rice bowls',image:'eat-tokyo-noodles.jpg',description:'A comforting bowl for a hungry day. Check your branch menu for its selection of noodles and rice dishes.'},
+  katsu:{title:'Katsu & curry',image:'eat-tokyo-katsu.jpg',description:'Golden katsu and Japanese curry. Find the dishes available at your local Eat Tokyo.'}
 };
 const dialog=document.querySelector('#food-dialog');
 document.querySelectorAll('.food-open').forEach(button=>button.addEventListener('click',()=>{const detail=food[button.dataset.food];document.querySelector('#dialog-title').textContent=detail.title;document.querySelector('#dialog-description').textContent=detail.description;const image=document.querySelector('#dialog-image');image.src='assets/'+detail.image;image.alt=button.querySelector('img').alt;dialog.showModal();}));
